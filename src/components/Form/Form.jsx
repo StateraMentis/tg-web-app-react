@@ -3,20 +3,20 @@ import './Form.css';
 import {useTelegram} from "../../hooks/useTelegram";
 
 const Form = () => {
-    const [country, setCountry] = useState('');
-    const [street, setStreet] = useState('');
+    const [summary, setSummary] = useState('');
+    const [description, setDescription] = useState('');
     // const [subject, setSubject] = useState('physical');
     const {tg} = useTelegram();
 
     const onSendData = useCallback(() => {
         const data = {
-            country,
-            street,
+            summary,
+            description,
             // subject
         }
         tg.sendData(JSON.stringify(data));
-    // }, [country, street, subject])
-    }, [country, street])
+    // }, [summary, street, subject])
+    }, [summary, description])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -32,19 +32,19 @@ const Form = () => {
     }, [])
 
     useEffect(() => {
-        if(!street || !country) {
+        if(!description || !summary) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [country, street])
+    }, [summary, description])
 
-    const onChangeCountry = (e) => {
-        setCountry(e.target.value)
+    const onChangeSummary = (e) => {
+        setSummary(e.target.value)
     }
 
-    const onChangeStreet = (e) => {
-        setStreet(e.target.value)
+    const onChangeDescription = (e) => {
+        setDescription(e.target.value)
     }
 
     // const onChangeSubject = (e) => {
@@ -57,16 +57,16 @@ const Form = () => {
             <input
                 className={'input'}
                 type="text"
-                placeholder={'Поле 1'}
-                value={country}
-                onChange={onChangeCountry}
+                placeholder={'Тема'}
+                value={summary}
+                onChange={onChangeSummary}
             />
             <input
                 className={'input'}
                 type="text"
-                placeholder={'Поле 2'}
-                value={street}
-                onChange={onChangeStreet}
+                placeholder={'Описание'}
+                value={description}
+                onChange={onChangeDescription}
             />
             {/* <select value={subject} onChange={onChangeSubject} className={'select'}>
                 <option value={'text_1'}>Текст 1</option>
