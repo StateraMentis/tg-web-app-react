@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import './InlineForm.css';
 import {useTelegram} from "../../hooks/useTelegram";
-import {useCallback, useEffect} from "react";
+// import {useCallback, useEffect} from "react";
 
 const Form = () => {
     const [summary, setSummary] = useState('');
