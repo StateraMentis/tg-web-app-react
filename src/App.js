@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {useTelegram} from "./hooks/useTelegram";
 import Header from "./components/Header/Header";
 import {Route, Routes} from 'react-router-dom'
-import ProductList from "./components/ProductList/ProductList";
+import ProductList from "./components/InlineForm/InlineForm";
 import Form from "./components/Form/Form";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
             <Header />
             <Routes>
                 <Route index element={<Form />}/>
-                <Route path={'form'} element={<Form />}/>
+                <Route path={'inline'} element={<InlineForm />}/>
             </Routes>
         </div>
     );
