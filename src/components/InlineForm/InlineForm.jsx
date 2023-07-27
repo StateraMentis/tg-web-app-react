@@ -3,41 +3,22 @@ import './InlineForm.css';
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
-const products = [
-    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые'},
-    {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая'},
-    {id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые'},
-    {id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая'},
-    {id: '5', title: 'Джинсы 3', price: 5000, description: 'Синего цвета, прямые'},
-    {id: '6', title: 'Куртка 7', price: 600, description: 'Зеленого цвета, теплая'},
-    {id: '7', title: 'Джинсы 4', price: 5500, description: 'Синего цвета, прямые'},
-    {id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая'},
-]
-
-const getTotalPrice = (items = []) => {
-    return items.reduce((acc, item) => {
-        return acc += item.price
-    }, 0)
-}
-
-const ProductList = () => {
-    const [addedItems, setAddedItems] = useState([]);
+const Form = () => {
+    const [summary, setSummary] = useState('');
+    const [description, setDescription] = useState('');
+    // const [subject, setSubject] = useState('physical');
     const {tg, queryId} = useTelegram();
 
     const onSendData = useCallback(() => {
         const data = {
-            products: addedItems,
-            totalPrice: getTotalPrice(addedItems),
+            summary,
+            description,
             queryId,
+            // subject
         }
-        fetch('http://85.119.146.179:8000/web-data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-    }, [addedItems])
+        tg.sendData(JSON.stringify(data));
+    // }, [summary, street, subject])
+    }, [summary, description])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -46,39 +27,55 @@ const ProductList = () => {
         }
     }, [onSendData])
 
-    const onAdd = (product) => {
-        const alreadyAdded = addedItems.find(item => item.id === product.id);
-        let newItems = [];
+    useEffect(() => {
+        tg.MainButton.setParams({
+            text: 'Отправить данные'
+        })
+    }, [])
 
-        if(alreadyAdded) {
-            newItems = addedItems.filter(item => item.id !== product.id);
-        } else {
-            newItems = [...addedItems, product];
-        }
-
-        setAddedItems(newItems)
-
-        if(newItems.length === 0) {
+    useEffect(() => {
+        if(!description || !summary) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
-            tg.MainButton.setParams({
-                text: `Купить ${getTotalPrice(newItems)}`
-            })
         }
+    }, [summary, description])
+
+    const onChangeSummary = (e) => {
+        setSummary(e.target.value)
     }
 
+    const onChangeDescription = (e) => {
+        setDescription(e.target.value)
+    }
+
+    // const onChangeSubject = (e) => {
+    //     setSubject(e.target.value)
+    // }
+
     return (
-        <div className={'list'}>
-            {products.map(item => (
-                <ProductItem
-                    product={item}
-                    onAdd={onAdd}
-                    className={'item'}
-                />
-            ))}
+        <div className={"form"}>
+            <h3>Введите ваши данные</h3>
+            <input
+                className={'input'}
+                type="text"
+                placeholder={'Тема'}
+                value={summary}
+                onChange={onChangeSummary}
+            />
+            <input
+                className={'input'}
+                type="text"
+                placeholder={'Описание'}
+                value={description}
+                onChange={onChangeDescription}
+            />
+            {/* <select value={subject} onChange={onChangeSubject} className={'select'}>
+                <option value={'text_1'}>Текст 1</option>
+                <option value={'text_2'}>Текст 2</option>
+            </select> */}
         </div>
     );
 };
 
-export default ProductList;
+export default Form;
