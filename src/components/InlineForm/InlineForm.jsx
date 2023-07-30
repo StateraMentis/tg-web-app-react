@@ -1,7 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import './InlineForm.css';
 import {useTelegram} from "../../hooks/useTelegram";
-// import {useCallback, useEffect} from "react";
 
 const Form = () => {
     const [summary, setSummary] = useState('');
@@ -16,7 +15,14 @@ const Form = () => {
             queryId,
             // subject
         }
-        tg.sendData(JSON.stringify(data));
+        // tg.sendData(JSON.stringify(data));
+        fetch('http://85.119.146.179:8000/web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
     // }, [summary, street, subject])
     }, [summary, description])
 

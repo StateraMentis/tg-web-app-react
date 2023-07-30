@@ -53,21 +53,23 @@ const Form = () => {
 
     return (
         <div className={"form"}>
-            <h3>Заявка в свободной форме</h3>
-            <input
-                className={'input'}
-                type="text"
-                placeholder={'Тема'}
-                value={summary}
-                onChange={onChangeSummary}
-            />
-            <input
-                className={'input'}
-                type="text"
-                placeholder={'Описание'}
-                value={description}
-                onChange={onChangeDescription}
-            />
+            <body>
+                <h3>Заявка в свободной форме</h3>
+                <input
+                    className={'input'}
+                    type="text"
+                    placeholder={'Тема'}
+                    value={summary}
+                    onChange={onChangeSummary}
+                />
+                <textarea
+                    className={'textarea'}
+                    type="text"
+                    placeholder={'Описание'}
+                    value={description}
+                    onChange={onChangeDescription}
+                />
+            </body>
             {/* <select value={subject} onChange={onChangeSubject} className={'select'}>
                 <option value={'text_1'}>Текст 1</option>
                 <option value={'text_2'}>Текст 2</option>
