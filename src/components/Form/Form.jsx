@@ -54,7 +54,8 @@ const Form = () => {
     return (
         <div className={"form"}>
             <body>
-                <h3>Заявка в свободной форме</h3>
+                {/* <h3>Заявка в свободной форме</h3> */}
+                <h3>Заявка в свободной форме</h3> 
                 <input
                     className={'input'}
                     type="text"
