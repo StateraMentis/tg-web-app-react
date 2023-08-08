@@ -18,7 +18,7 @@ function App() {
             {/* <Header /> */}
             <Routes>
                 <Route index element={<Form />}/>
-                <Route path={'inline'} element={<InlineForm />}/>
+                {/* <Route path={'inline'} element={<InlineForm />}/> */}
             </Routes>
         </div>
     );
