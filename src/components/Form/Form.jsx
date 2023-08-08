@@ -70,7 +70,7 @@ const Form = () => {
                 <textarea
                     className={'textarea'}
                     type="text"
-                    placeholder={description_1}
+                    placeholder={description_2}
                     // placeholder={'Описание'}
                     value={description}
                     onChange={onChangeDescription}
