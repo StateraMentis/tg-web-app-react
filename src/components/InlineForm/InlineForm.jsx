@@ -15,14 +15,14 @@ const Form = () => {
             queryId,
             // subject
         }
-        // tg.sendData(JSON.stringify(data));
-        fetch('http://85.119.146.179:8000/web-data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
+        tg.sendData(JSON.stringify(data));
+        // fetch('http://85.119.146.179:8000/web-data', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(data)
+        // })
     // }, [summary, street, subject])
     }, [summary, description])
 
