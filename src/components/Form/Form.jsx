@@ -3,9 +3,9 @@ import './Form.css';
 import {useTelegram} from "../../hooks/useTelegram";
 
 const Form = () => {
-    const queryParameters = new URLSearchParams(window.location.search)
-    const summary_1 = queryParameters.get("summary")
-    const description_2 = queryParameters.get("description")
+    // const queryParameters = new URLSearchParams(window.location.search)
+    // const summary_1 = queryParameters.get("summary")
+    // const description_2 = queryParameters.get("description")
     const [summary, setSummary] = useState('');
     const [description, setDescription] = useState('');
     // const [subject, setSubject] = useState('physical');
@@ -62,16 +62,16 @@ const Form = () => {
                 <input
                     className={'input'}
                     type="text"
-                    // placeholder={'Тема'}
-                    placeholder={summary_1}
+                    placeholder={'Тема'}
+                    // placeholder={summary_1}
                     value={summary}
                     onChange={onChangeSummary}
                 />
                 <textarea
                     className={'textarea'}
                     type="text"
-                    placeholder={description_2}
-                    // placeholder={'Описание'}
+                    // placeholder={description_2}
+                    placeholder={'Описание'}
                     value={description}
                     onChange={onChangeDescription}
                 />
