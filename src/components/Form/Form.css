@@ -13,7 +13,7 @@
 .link {
     text-decoration: none;
     color: var(--tg-theme-text-color);
-    line-height: 2;
+    line-height: 3;
   }
 
 .form {
