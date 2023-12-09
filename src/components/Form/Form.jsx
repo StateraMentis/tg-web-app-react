@@ -58,9 +58,9 @@ const Form = () => {
         <div className={"form"}>
             <body>
                 {/* <h3>Заявка в свободной форме</h3> */}
-                <h3><a href="https://t.me/help_VSK_bot">Поддержка ВСК</a></h3>
-                <h3><a href="https://t.me/help_vsk_specialist_bot">Специалисты ВСК</a></h3>
-                <h3><a href="https://t.me/MentisTestBot">Тестовый бот ВСК</a></h3>
+                <h3><a class="link" href="https://t.me/help_VSK_bot">Поддержка ВСК</a></h3>
+                <h3><a class="link" href="https://t.me/help_vsk_specialist_bot">Специалисты ВСК</a></h3>
+                <h3><a class="link" href="https://t.me/MentisTestBot">Тестовый бот ВСК</a></h3>
                 {/* <h3>Заявка в свободной форме</h3> 
                 <input
                     className={'input'}
