@@ -63,7 +63,7 @@ const Form = () => {
                 <h3><a class="link" href="https://t.me/help_VSK_release_bot">Релизы ВСК</a></h3>
                 <h3><a class="link" href="https://t.me/help_VSK_accident_bot">Аварии ВСК</a></h3>
                 <h3><a class="link" href="https://t.me/help_VSK_problems_bot">Проблемы ВСК</a></h3>
-                <h3><a class="link" href="https://t.me/Barakuda_test_bot?start=help">Прочее</a></h3>
+                {/* <h3><a class="link" href="https://t.me/Barakuda_test_bot?start=help">Прочее</a></h3> */}
                 {/* <h3>Заявка в свободной форме</h3> 
                 <input
                     className={'input'}
